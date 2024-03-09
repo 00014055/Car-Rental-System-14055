@@ -12,6 +12,7 @@ namespace CarRent.Data.Migrations
                 name: "Price",
                 table: "cars");
 
+
             migrationBuilder.AddColumn<string>(
                 name: "Brand",
                 table: "cars",

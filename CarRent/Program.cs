@@ -1,6 +1,7 @@
 using CarRent.Data;
 using Microsoft.EntityFrameworkCore;
 using CarRent.Controllers;
+using CarRent.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<CarRentDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
+builder.Services.AddScoped<ICarsRepository, CarsRepository>();
 
 var app = builder.Build();
 
