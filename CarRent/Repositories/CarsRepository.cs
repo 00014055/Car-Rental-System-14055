@@ -14,13 +14,13 @@ namespace CarRent.Repositories
 
         public async Task<IEnumerable<Car>> GetAllCars()
         {
-            var cars = await _dbContext.cars.ToListAsync();
+            var cars = await _dbContext.cars.Include(b => b.customer).ToListAsync();
             return cars;
         }
 
         public async Task<Car> GetSingleCar(int id)
         {
-            return await _dbContext.cars.FirstOrDefaultAsync(b => b.Id == id);
+            return await _dbContext.cars.Include(b => b.customer).FirstOrDefaultAsync(b => b.Id == id);
         }
         public async Task CreateCar(Car car)
         {

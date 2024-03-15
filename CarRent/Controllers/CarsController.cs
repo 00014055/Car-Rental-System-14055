@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CarRent.Data;
 using CarRent.Models;
+using CarRent.Repositories;
 
 namespace CarRent.Controllers
 {
@@ -15,39 +16,32 @@ namespace CarRent.Controllers
     public class CarsController : ControllerBase
     {
         private readonly CarRentDbContext _context;
+        private readonly ICarsRepository _carsRepository;
 
-        public CarsController(CarRentDbContext context)
+        public CarsController(ICarsRepository carsRepository)
         {
-            _context = context;
+            _carsRepository = carsRepository;
         }
 
         // GET: api/Cars
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Car>>> Getcars()
+        public async Task<IEnumerable<Car>> Getcars()
         {
-          if (_context.cars == null)
-          {
-              return NotFound();
-          }
-            return await _context.cars.ToListAsync();
+            return await _carsRepository.GetAllCars();
         }
 
         // GET: api/Cars/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Car>> GetCar(int id)
         {
-          if (_context.cars == null)
-          {
-              return NotFound();
-          }
-            var car = await _context.cars.FindAsync(id);
+            var car = await _carsRepository.GetSingleCar(id);
 
             if (car == null)
             {
                 return NotFound();
             }
 
-            return car;
+            return Ok(car);
         }
 
         // PUT: api/Cars/5
@@ -59,25 +53,7 @@ namespace CarRent.Controllers
             {
                 return BadRequest();
             }
-
-            _context.Entry(car).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CarExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            await _carsRepository.UpdateCar(car);
             return NoContent();
         }
 
@@ -86,12 +62,7 @@ namespace CarRent.Controllers
         [HttpPost]
         public async Task<ActionResult<Car>> PostCar(Car car)
         {
-          if (_context.cars == null)
-          {
-              return Problem("Entity set 'CarRentDbContext.cars'  is null.");
-          }
-            _context.cars.Add(car);
-            await _context.SaveChangesAsync();
+            _carsRepository.CreateCar(car);
 
             return CreatedAtAction("GetCar", new { id = car.Id }, car);
         }
@@ -100,25 +71,14 @@ namespace CarRent.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCar(int id)
         {
-            if (_context.cars == null)
-            {
-                return NotFound();
-            }
-            var car = await _context.cars.FindAsync(id);
-            if (car == null)
-            {
-                return NotFound();
-            }
-
-            _context.cars.Remove(car);
-            await _context.SaveChangesAsync();
+            _carsRepository.DeleteCar(id);
 
             return NoContent();
         }
 
-        private bool CarExists(int id)
-        {
-            return (_context.cars?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
+        //private bool CarExists(int id)
+        //{
+        //    return (_context.cars?.Any(e => e.Id == id)).GetValueOrDefault();
+        //}
     }
 }

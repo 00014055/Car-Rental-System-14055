@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<CarRentDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
 builder.Services.AddScoped<ICarsRepository, CarsRepository>();
+builder.Services.AddScoped<ICustomersRepository, CustomersRepository>();
 
 var app = builder.Build();
 
