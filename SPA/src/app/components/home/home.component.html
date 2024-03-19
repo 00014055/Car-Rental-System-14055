@@ -1,0 +1,89 @@
+<div class="isolate bg-black px-6 py-10 sm:py-20 lg:px-8">
+    <!-- <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]" aria-hidden="true">
+      <div class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ffffff] to-[#666666] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"></div>
+    </div> -->
+    <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
+        aria-hidden="true">
+        <div
+            class="relative left-1/2 -z-10 aspect-[1155/678] w-[50vw] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-white to-black opacity-30 sm:left-[calc(50% - 40rem)] sm:w-[72.1875rem]">
+        </div>
+    </div>
+
+    <div class="mx-auto text-center">
+        <h2 class="font-bold uppercase text-lg text-white" style="font-size: 90px;">Car Rental System</h2>
+        <p class="font-light mt-2 text-lg leading-8 text-white">Coursework Portfolio WAD, student ID:00014055</p>
+    </div>
+    <form action="#" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20">
+        <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            <div>
+                <label for="first-name" class="block text-sm font-semibold leading-6 text-white">Pick-up Date</label>
+                <div class="mt-2.5">
+                    <input type="text" name="first-name" id="first-name" autocomplete="given-name"
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+            </div>
+            <div>
+                <label for="last-name" class="block text-sm font-semibold leading-6 text-white">Return Date</label>
+                <div class="mt-2.5">
+                    <input type="text" name="last-name" id="last-name" autocomplete="family-name"
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+            </div>
+            <div class="sm:col-span-2">
+                <label for="country" class="block text-sm font-semibold leading-6 text-white">Location</label>
+                <!-- <div class="relative mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"> -->
+                <div
+                    class="block bg-white w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <select id="country" name="country"
+                        class="block w-full h-full rounded-md border-0  py-0 pl-4 pr-9 text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                        <option>Tashkent</option>
+                        <option>Tashkent region</option>
+                        <option>Samarkand</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+        <div class="mt-10">
+            
+            <button type="button" (click)="toggleTableVisibility()" button-class="custom-button"
+                class="block w-full mt-3 rounded-md bg-[#ff4c4c] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#f67777] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Show
+                Cars</button>
+
+            <button type="button" (click)="c()"
+                class="block w-full rounded-md mt-3 bg-[#ff4c4c] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#f67777] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Create</button>    
+        </div>
+    </form>
+</div>
+
+
+
+<div class="table-container">
+    <table mat-table [dataSource]="itemList" class="mat-elevation-z8" [class.hidden]="!tableVisible">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container>
+        <ng-container matColumnDef="brand">
+            <th mat-header-cell *matHeaderCellDef>Brand</th>
+            <td mat-cell *matCellDef="let element">{{ element.brand }}</td>
+        </ng-container>
+        <ng-container matColumnDef="year">
+            <th mat-header-cell *matHeaderCellDef>Year</th>
+            <td mat-cell *matCellDef="let element">{{ element.year }}</td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element" >
+                <button mat-raised-button color="primary" style="margin: 0 10px;"  (click)="e(element.id)">Edit</button>
+                <button mat-raised-button color="accent" style="margin: 0 10px;"  (click)="dt(element.id)">Details</button>
+                <button mat-raised-button color="warn" style="margin: 0 10px;"  (click)="dl(element.id)">Delete</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

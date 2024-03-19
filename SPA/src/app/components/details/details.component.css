@@ -1,0 +1,18 @@
+.mat-sort-header-container {
+    align-items: center;
+  }
+  
+
+  .table-container {
+    margin: 0 auto; /* Center the table horizontally */
+    width: 50%; /* Set the width of the container */
+  }
+  
+  .classic-table {
+    width: 100%; /* Set the width of the table to 100% of its container */
+  }
+  
+  .classic-table th, .classic-table td {
+    text-align: left; /* Align text to the left within table cells */
+    padding: 8px; /* Add padding to table cells */
+  }

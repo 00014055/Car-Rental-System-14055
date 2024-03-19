@@ -1,0 +1,42 @@
+<div class="isolate bg-black px-6 py-10 sm:py-20 lg:px-8" >
+    <div class="flex">
+        <div class="w-1/2 pr-4">
+    <form class="example-form " >
+        <mat-form-field class="example-full-width">
+        <mat-label>Brand</mat-label>
+        <input matInput placeholder="Audi" >
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Model</mat-label>
+        <input matInput placeholder="100" >
+      </mat-form-field>
+      
+      
+      <mat-form-field class="example-full-width">
+        <mat-label>Year</mat-label>
+        <input matInput placeholder="2019" >
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Customer ID</mat-label>
+        <input matInput placeholder="1" >
+      </mat-form-field>
+
+      <button type="button" (click)="create()"
+                class="block w-full rounded-md mt-3 bg-[#ff4c4c] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#f67777] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Create</button>  
+        
+       <button type="button" (click)="back()"
+                class="block w-full rounded-md mt-3 bg-[#ff4c4c] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#f67777] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Back</button>           
+    
+  </form>
+</div>
+
+  <div class="w-1/2 pl-4">
+    <img src="assets/car1.jpg" alt="Image">
+  </div>
+</div>
+</div>

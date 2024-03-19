@@ -1,0 +1,59 @@
+table {
+    width: 100%;
+}
+
+.centered-button {
+    background-color: red;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.table-container {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.mdc-data-table__header-cell {
+
+    text-align: center;
+}
+  
+.mdc-data-table__cell {
+    text-align: center;
+}
+
+
+  .mat-table {
+    width: 100%; 
+  }
+  
+  .mat-cell {
+    text-align: center; 
+  }
+
+
+button.mat-button {
+    background-color: transparent;
+    color: inherit;
+    box-shadow: none;
+    border: none;
+    margin: 10px;
+}
+
+/* Apply custom styles */
+button.mat-button.custom-button {
+    /* Add your custom styles here */
+    /* Example: */
+    background-color: #ff4c4c;
+    color: #742a2a;
+}
+
+/* Apply hover styles for custom button */
+button.mat-button.custom-button:hover {
+    background-color: #f67777;
+}
