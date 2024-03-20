@@ -7,7 +7,7 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
-
+//14055
 {
 
   options.AddPolicy(MyAllowSpecificOrigins,
@@ -36,6 +36,7 @@ builder.Services.AddDbContext<CarRentDbContext>(options => options.UseSqlServer(
 builder.Services.AddScoped<ICarsRepository, CarsRepository>();
 builder.Services.AddScoped<ICustomersRepository, CustomersRepository>();
 
+//14055
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -53,3 +54,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+//14055
