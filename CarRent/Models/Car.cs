@@ -12,7 +12,7 @@ namespace CarRent.Models
 
         [Required(ErrorMessage = "filling in this field is required")]
         public string Brand { get; set; }
-
+    //14055 
         [Required(ErrorMessage = "filling in this field is required")]
         public string Model { get; set; }
 
