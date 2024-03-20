@@ -1,6 +1,6 @@
 ﻿using CarRent.Models;
 using Microsoft.EntityFrameworkCore;
-
+//14055
 namespace CarRent.Data
 {
     public class CarRentDbContext: DbContext
